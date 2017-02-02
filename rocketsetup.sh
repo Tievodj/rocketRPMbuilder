@@ -11,7 +11,7 @@ else
     VER="$2";
 fi
 
-cd ~/git/rocketRPMbuilder/rocketchat
+cd ~/git/rocketRPMbuilder
 
 mkdir -p rocketchat-0.$1/root/opt
 
@@ -30,8 +30,9 @@ echo "Move the bundle"
 # Move the bundle
 mv rocketchat-0.$1/root/opt/bundle rocketchat-0.$1/root/opt/Rocket.Chat
 
+echo "Copy the copyright notice"
 # Copy the copyright notice
-cp COPYING rocketchat-0.$1
+cp COPYING ./rocketchat-0.$1
 
 echo "Remove the original downloaded tgz file"
 # Remove the original downloaded tgz file
