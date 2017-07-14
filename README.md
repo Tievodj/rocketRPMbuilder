@@ -13,14 +13,15 @@ If you want to build standard RPMs make sure you have a build layout in place
 
 Here's a little script to do it for you:
 
- ```#!/bin/sh
+ ```
+ #!/bin/sh
  cd ~
  mkdir ~/rpmbuild
  for i in BUILD BUILDROOT RPMS SOURCES SPECS SRPMS
  do
  mkdir ~/rpmbuild/$i
- done```
-
+ done
+```
 
 Modify your spec file versions.
 
