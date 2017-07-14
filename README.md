@@ -7,6 +7,21 @@ You can modify the script to just build a standard rpm if you have a standard bu
 
 Usage:
 
+Clone this git repo.
+
+If you wwant to build standard RPMs make sure you have a build layout in place
+
+Here's a little sctipt to do it for you:
+
+ #!/bin/sh
+ cd ~
+ mkdir ~/rpmbuild
+ for i in BUILD BUILDROOT RPMS SOURCES SPECS SRPMS
+ do
+ mkdir ~/rpmbuild/$i
+ done
+
+
 Modify your spec file versions.
 
 Run:
