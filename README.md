@@ -11,7 +11,7 @@ Clone this git repo.
 
 If you want to build standard RPMs make sure you have a build layout in place
 
-Here's a little script to do it for you:
+Here's a little script to do it for you (in the repo too):
 
  ```
  #!/bin/sh
@@ -26,8 +26,13 @@ Here's a little script to do it for you:
 Modify your spec file versions.
 
 Run:
-`./rocketsetup.sh $rocketVersion $specVersion`
+
+`
+./rocketsetup.sh $rocketVersion $specVersion
+`
 
 e.g.
 
-`./rocketsetup.sh 0.57.2 3`
+`
+./rocketsetup.sh 0.57.2 3
+`
