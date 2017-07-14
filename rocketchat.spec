@@ -1,6 +1,6 @@
 %define name rocketchat
-%define version 0.0.50.1
-%define release 2
+%define version 0.0.57.2
+%define release 1
 %define _binaries_in_noarch_packages_terminate_build   0
 %define __os_install_post %{nil}
 
@@ -16,6 +16,7 @@ BuildRoot: /var/tmp/%{name}-%{version}
 BuildArch: noarch
 BuildRequires: e-smith-devtools
 Requires:  e-smith-release >= 9.0
+Requires:   nodejs >= 4.7.2
 AutoReqProv: no
 
 %description
@@ -67,7 +68,7 @@ echo "Installing npm modules for RocketChat - this may take a while"
 npm install
 npm install -g forever n
 n 4.7.2
-
+npm install -g npm@3.10.9
 
 # Now restart the service if it exists
 if [[ -f /etc/rc.d/init.d/rocketchat ]]; then
@@ -78,18 +79,46 @@ else
   echo "No rocketchat service. You may need smeserver-rocketchat installed"
 fi
 
-echo "****************************************"
-echo "https://wiki.contribs.org/Rocket_Chat"
-echo "Check node -v"
-echo "n 4.7.2"
-echo "Check npm --version"
-echo "npm install -g npm@3.10.9"
-echo "****************************************"
+echo "Installed node version:" `node -v`
+echo "Installed npm version:" `npm -v`
 
 %postun
 
 
 %changelog
+* Fri Jul 14 2017 John Crisp <jcrisp@safeandsoundit.co.uk> 0.0.57.2-1
+- Changes https://github.com/RocketChat/Rocket.Chat/releases/tag/0.57.2
+
+* Thu Jul 06 2017 John Crisp <jcrisp@safeandsoundit.co.uk> 0.0.57.1-1
+- Changes https://github.com/RocketChat/Rocket.Chat/releases/tag/0.57.1
+
+* Tue Jul 04 2017 John Crisp <jcrisp@safeandsoundit.co.uk> 0.0.57.0-1
+- Changes https://github.com/RocketChat/Rocket.Chat/releases/tag/0.57.0
+
+* Thu Apr 20 2017 John Crisp <jcrisp@safeandsoundit.co.uk> 0.0.56.0-1
+- Changes https://github.com/RocketChat/Rocket.Chat/releases/tag/0.56.0
+
+* Thu Apr 20 2017 John Crisp <jcrisp@safeandsoundit.co.uk> 0.0.55.1-1
+- Changes https://github.com/RocketChat/Rocket.Chat/releases/tag/0.55.1
+
+* Wed Apr 19 2017 John Crisp <jcrisp@safeandsoundit.co.uk> 0.0.55.0-1
+- Changes https://github.com/RocketChat/Rocket.Chat/releases/tag/0.55.0
+
+* Mon Mar 27 2017 John Crisp <jcrisp@safeandsoundit.co.uk> 0.0.54.2-1
+- Changes https://github.com/RocketChat/Rocket.Chat/releases/tag/0.54.2
+
+* Fri Mar 24 2017 John Crisp <jcrisp@safeandsoundit.co.uk> 0.0.54.1-1
+- Changes https://github.com/RocketChat/Rocket.Chat/releases/tag/0.54.1
+
+* Tue Feb 14 2017 John Crisp <jcrisp@safeandsoundit.co.uk> 0.0.53.0-1
+- Changes https://github.com/RocketChat/Rocket.Chat/releases/tag/0.53.0
+
+* Tue Feb 14 2017 John Crisp <jcrisp@safeandsoundit.co.uk> 0.0.52.0-1
+- Changes https://github.com/RocketChat/Rocket.Chat/releases/tag/0.52.0
+
+* Tue Feb 07 2017 John Crisp <jcrisp@safeandsoundit.co.uk> 0.0.51.0-1
+- update installed node version
+
 * Thu Feb 02 2017 John Crisp <jcrisp@safeandsoundit.co.uk> 0.0.50.1-2
 - update installed node version
 
