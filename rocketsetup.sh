@@ -1,7 +1,11 @@
 #!/bin/sh
+
+# for dirs we work in the git/RocketcRPMbuilder dir
+
 if [ "$1" == "" ]; then
     echo "Usage: `basename $0` [You need to add a version number e.g 0.38.0]"
     echo "Optional add the spec version e.g. 0.38.0 2"
+    echo "Defaults to spec version -1"
         exit 0
 fi
 
@@ -11,16 +15,14 @@ else
     VER="$2";
 fi
 
-cd ~/git/rocketRPMbuilder
-
 mkdir -p rocketchat-0.$1/root/opt
 
 echo "wget the source"
 # Download tar.gz if we haven't already got a copy
 wget https://rocket.chat/releases/$1/download -O rocket.chat-0.$1.tgz
 
-
-# wget https://github.com/RocketChat/Rocket.Chat/archive/$1.tar.gz -O rocket.chat-0.$1.tgz
+# Alt
+#https://github.com/RocketChat/Rocket.Chat/archive/$1.tar.gz rocket.chat-0.$1.tgz
 
 echo "Extract source"
 # Extract
@@ -62,8 +64,8 @@ echo "Build the rpm"
 
 #And build the srpm
 # This builds normally
-# rpmbuild -ba /home/john/rpmbuild/SPECS/rocketchat.spec
+# rpmbuild -ba ~/rpmbuild/SPECS/rocketchat.spec
 
 # This mock builds
-rpmbuild -bs /home/john/rpmbuild/SPECS/rocketchat.spec
-mock -r /etc/mock/smeserver-9-x86_64-base.cfg rebuild /home/john/rpmbuild/SRPMS/rocketchat-0.$1-$VER.src.rpm
+rpmbuild -bs ~/rpmbuild/SPECS/rocketchat.spec
+mock -r /etc/mock/smeserver-9-x86_64-base.cfg rebuild ~/rpmbuild/SRPMS/rocketchat-0.$1-$VER.src.rpm
