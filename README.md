@@ -9,9 +9,9 @@ Usage:
 
 Clone this git repo.
 
-If you wwant to build standard RPMs make sure you have a build layout in place
+If you want to build standard RPMs make sure you have a build layout in place
 
-Here's a little sctipt to do it for you:
+Here's a little script to do it for you:
 
  #!/bin/sh
  cd ~
