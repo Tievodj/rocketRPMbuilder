@@ -48,9 +48,23 @@ echo "Now remove the old directory"
 # Remove the old directory
 rm -rf ./rocketchat-0.$1
 
-echo " Copy spec, patch and tgz to build area"
+echo "Copy spec, patch and tgz to build area"
 # Copy the spec and source to the build area
-\cp -rf *.tar.gz ~/rpmbuild/SOURCES;\cp -rf *.patch ~/rpmbuild/SOURCES;\cp -rf *.spec ~/rpmbuild/SPECS
+if ls *.patch > /dev/null 2>&1; then
+    \cp -rf *.patch ~/rpmbuild/SOURCES
+    echo "Copy patch files"
+fi
+
+if ls *.gz > /dev/null 2>&1; then
+    \cp -rf *.tar.gz ~/rpmbuild/SOURCES
+    echo "Copy source files"
+fi
+
+if ls *.spec > /dev/null 2>&1; then
+    \cp -rf *.spec ~/rpmbuild/SPECS
+    echo "Copy spec file"
+fi
+
 
 echo "Remove the new tgz file"
 # Remove the new tar.gz file - copy is in sources

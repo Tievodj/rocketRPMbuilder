@@ -1,6 +1,6 @@
 %define name rocketchat
 %define version 0.0.57.2
-%define release 1
+%define release 2
 %define _binaries_in_noarch_packages_terminate_build   0
 %define __os_install_post %{nil}
 
@@ -16,7 +16,7 @@ BuildRoot: /var/tmp/%{name}-%{version}
 BuildArch: noarch
 BuildRequires: e-smith-devtools
 Requires:  e-smith-release >= 9.0
-Requires:   nodejs >= 4.7.2
+Requires:   nodejs >= 4.8.2
 AutoReqProv: no
 
 %description
@@ -67,7 +67,7 @@ cd /opt/Rocket.Chat/programs/server
 echo "Installing npm modules for RocketChat - this may take a while"
 npm install
 npm install -g forever n
-n 4.7.2
+n 4.8.2
 npm install -g npm@3.10.9
 
 # Now restart the service if it exists
@@ -86,6 +86,9 @@ echo "Installed npm version:" `npm -v`
 
 
 %changelog
+* Tue Jul 18 2017 John Crisp <jcrisp@safeandsoundit.co.uk> 0.0.57.2-2
+- Bump node version required
+
 * Fri Jul 14 2017 John Crisp <jcrisp@safeandsoundit.co.uk> 0.0.57.2-1
 - Changes https://github.com/RocketChat/Rocket.Chat/releases/tag/0.57.2
 
